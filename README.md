@@ -137,8 +137,8 @@ When looking at next steps, I would focus more into the data and see how logging
 -----
 
 ### References
-http://insideairbnb.com/about/
-https://en.wikipedia.org/wiki/Airbnb
+-http://insideairbnb.com/about/
+-https://en.wikipedia.org/wiki/Airbnb
 
 
 
