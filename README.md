@@ -77,7 +77,7 @@ entrance|int32|df_cleaning_01|Indicates if AirBnB property has any private entra
 stay|int32|df_cleaning_01|Indicates if AirBnB property has any long term stay availability
 secure|int32|df_cleaning_01|Indicates if AirBnB property has any security systems in place including: Security Cameras on Property, Lock on bedroom doors, Keypad, and Smart Lock
 
-
+------
 
 ### Data Cleaning/ Null values
 I began by looking at each of the columns and how they influence prices of AirBnB. I checked to see if there were any null values in the columns and saw that there were some columns with a low number of null values and other columns that had a large number of null values. The columns with a low number of null values were host_is_superhost, host_listing_counts, host_has_profile_pic, host_identity_verified, and bathrooms. Each of these columns had a low number of null values that was less than 5% of the data. I then began looking at each of the columns and decided to drop any that included URLs and scraping data because they aren’t useful in providing model predictions when they are just URLs. I then dropped a lot information that was presented about hosts because that won’t provide more knowledge on how to improve the prediction of the prices of AirBnB properties. 
@@ -102,6 +102,7 @@ secure|int32|df_cleaning_01|Indicates if AirBnB property has any security system
 
 ---
 ### Preprocessing Models
+
 For the preprocessing section, three main events occurred which were Dummifying the columns, using an Iterative Imputer, and checking variance inflation factor. 
 
 From the Data Dictionary that was presented above, the columns that were needed to be dummified were neighbourhood cleansed, property type, room type, and bathrooms. Each of these columns were categorical and to be able to include them into the modeling section, they needed to be changed. Each group was looked at to make sure there were no null values present before the model phase as well.
@@ -110,9 +111,10 @@ For the iterative imputer, some of the columns had a large number of null values
 
 The last preprocessing used was VIF also known as variance inflation factor. This looked into multicolinearity between columns. A score that is greater than 5 informs that two independent features have a high intercorrelation between them. When it was conducted, it was found that host_response_rate and host_acceptance_rate had very high intercorrelation, as a result, I began by dropping the higher VIF number which was host_acceptance_rate from the model to hinder the high intercorrelation. 
 
-
+----
 
 ### Models
+
 Multiple models were looked at including Linear Regression, Lasso Regularization, Ridge Regularization, Bagging Regressors, Random Forest Regressor, and two Deep learning Neural Networks. The models were made to predict prices for AirBnB properties with the features that were chosen after data cleaning. 
 
 When looking at the Linear Regression R squared values, the training score was 0.68, but the testing score was -9.0265. This is after applying the natural log of the price column since the distribution was left skewed where I attempted to normalize the distribution a little more. The model was too overfit and so the testing set did a really bad job even after applying standard scalar for the x_train and x_test values. 
@@ -127,13 +129,12 @@ The Random Forest also provided scores that were overfit as well.  Its R squared
 
 For the last two models, a Neural Network was performed on the data. From this Neural Network, 100 epochs were run with a batch_size of 256. The train set R squared value was 0.64 and the testing set was 0.58. There was a small overfitting, but overall the model performed pretty well and similar to the Regularization models.
 
-
-
-
+----
 
 ### Conclusions
 When looking at next steps, I would focus more into the data and see how logging the features that had skewed distributions would affect the models. I would also make more neural networks with more dense layers to see how that would influence the models as well. I also felt that NLP modeling with predicting the models would help as well when it comes to accurately predicting the Airbnb price. That will be the next plan after this. 
 
+-----
 
 ### References
 http://insideairbnb.com/about/
